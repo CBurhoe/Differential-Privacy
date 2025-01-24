@@ -1,0 +1,103 @@
+"How do you grade attendance?" "Vibes" "That's not great, but fine"
+
+UVM applied differential privacy programming
+
+Caltone lectures on YouTube?
+
+
+
+what is differential privacy
+- privacy
+- allowing a data owner/storer to keep useful data while ensuring the privacy of the data constitutents
+
+
+Netflix challenge
+- Netflix released anonomized viewer data, request for help about improving recommendation algorithms
+- Tiny Sweeney, Harvard?
+- Linkage attack
+  - using public data to deanonomize private data
+
+Gov of Massachusetts before Mitt Romney
+- public voter information
+- private/anonomized medical database, open facing for doctors and research
+- linkage attack to obtain the medical information of the governor
+
+Problem
+- have data
+- want to use the data for stuff (census, medical, voter, etc etc)
+- but also want to protect privacy
+
+classical approach
+- anonomize data
+- vulnerable to linkage attacks
+- bad idea for plenty of reasons
+
+combinatorics makes narrowing down individuals from large data sets extremely easy
+
+WSE data privacy solution
+- only release data about large groups
+- >20 people in order to obtain the information
+- falls within the curator model
+  - at the mercy of the data owner/curator/admin to get the data
+  - curator can set the requirements for the data
+- issues
+  - differencing attack
+    - "how many people have had covid this month" MINUS "how many people have had covid this month NOT NAMED Mike Dinitz"
+    - figuring out if questions could be used in a differencing attack is an NP-hard problem
+  - not releasing data gives information that there are fewer than 20 people
+
+philosophical answer
+- preserve privacy for MOST people, not all
+- sacrifice epsilon factor of the population to ensure the privacy of everyone else
+- randomly sample (epsilon * n) people from the pop, release those data
+- not a great solution
+
+
+what even is "privacy"?
+ 
+
+US census
+- releases data with diff priv
+- even before this, they were doing things to ensure the legally prescribed privacy requirement of the census data
+- so even before the diff priv, was producing almost useless data
+
+
+model
+- database D
+- trusted curator
+
+interactive model
+- curator holds data
+- you come to curator and make a query
+- curator does something and gives some answer (could be null answer)
+
+non-interactive model
+- curator holds data
+- process the data somehow
+- release processed data into the world
+  - summary statistics
+  - synthetic database
+- lock down the original data
+
+synthetic database
+- same properties as original data
+- but different underlying data
+
+private mechanisms/algorithms
+- input: database D AND random bits
+- output: answer while preserving privacy
+
+privacy
+- basic
+  - disallow linkage attacks
+  - disallow recovering sensitive data
+- want more guarantees
+  - plausible deniability
+
+plausible deniability:
+
+randomized response
+- with probability 1/2: answer truthfully
+- with probability 1/4: answer affirmative
+- with probability 1/4: answer negative
+
